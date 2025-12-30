@@ -48,10 +48,14 @@ estimand_labels <- c(
   "n_cpts" = "Number of change points"
 )
 
+## preprocessing
+res <- res %>%
+  rename(SNR = snr)
+
 
 # Server logic -----------------------------------------------------------------
 
-function(input, output, session) {
+server <- function(input, output, session) {
   
   ## force boxplot for "combined" pattern
   plot_type <- reactive({
@@ -101,7 +105,7 @@ function(input, output, session) {
         )
       if(input$combined_individual_snr){
         req(input$combined_snr)
-        data <- data %>% filter(snr %in% input$combined_snr)
+        data <- data %>% filter(SNR %in% input$combined_snr)
       }
       
     } else {
@@ -110,7 +114,7 @@ function(input, output, session) {
         filter(
           distribution == input$distribution,
           pattern == input$pattern,
-          snr %in% input$snr
+          SNR %in% input$snr
         )
       # dmaxf filtering only applies when pattern is not "nochange"
       if (input$pattern != "nochange") {
@@ -158,7 +162,7 @@ function(input, output, session) {
       num_snr <- 0
       num_dmaxf <- 0
     } else {
-      num_snr <- length(unique(data$snr))
+      num_snr <- length(unique(data$SNR))
       num_dmaxf <- if ("dmaxf" %in% names(data)) length(unique(data$dmaxf)) else 0
     }
     
@@ -177,7 +181,7 @@ function(input, output, session) {
                      color = "black") +
            scale_color_manual(values = alg_col) + 
            scale_fill_manual(values = alg_col) +
-           theme_bw() +
+           theme_minimal() +
            labs(
               title = paste0("Estimated ", 
                              tolower(estimand_label), 
@@ -191,35 +195,6 @@ function(input, output, session) {
               color = "Algorithm",
               fill = "Algorithm"
            )
-    } else if (current_plot_type == "gam") {
-      p <- ggplot(data, 
-                  aes(x = nobs, 
-                      y = .data[[est_col]], 
-                      color = algorithm, 
-                      fill = algorithm)) +
-        geom_smooth(method = "gam", 
-                    formula = y ~ s(x, bs = "cs"), 
-                    se = input$show_ci, 
-                    alpha = 0.2) +
-        geom_line(aes(y = .data[[true_col]]), 
-                  linetype = "dashed", 
-                  color = "black") +
-        scale_color_manual(values = alg_col) +
-        scale_fill_manual(values = alg_col) +
-        theme_bw() +
-        labs(
-          title = paste0("Estimated ", 
-                         tolower(estimand_label),
-                         " over sample size"),
-          subtitle = paste0("(Dashed line indicates the true ", 
-                            tolower(estimand_label), 
-                            ")"),
-          x = "Sample size",
-          y = paste("Estimated", 
-                    tolower(estimand_label)),
-          color = "Algorithm",
-          fill = "Algorithm"
-        )
     } else if (current_plot_type == "boxplot") {
       p <- ggplot(data, 
                   aes(x = nobs_cat, 
@@ -231,7 +206,7 @@ function(input, output, session) {
                       linetype = "dashed", 
                       color = "darkgray") +
            scale_color_manual(values = alg_col) + 
-           theme_bw() +
+           theme_minimal() +
            labs(
               title = paste0("Boxplot of ", 
                              tolower(estimand_label), 
@@ -251,17 +226,17 @@ function(input, output, session) {
     
     ## conditionally add facets
     if (input$pattern == "combined" && input$combined_individual_snr) {
-      unique_snr <- unique(data$snr)
+      unique_snr <- unique(data$SNR)
       if (length(unique_snr) > 1) {
-        p <- p + facet_wrap(~ snr, 
+        p <- p + facet_wrap(~ SNR, 
                             labeller = label_both)
       }
     } else if (input$pattern != "combined"){
       if (num_snr > 1 && num_dmaxf > 1) {
-        p <- p + facet_grid(snr ~ dmaxf, 
+        p <- p + facet_grid(SNR ~ dmaxf, 
                             labeller = label_both)
       } else if (num_snr > 1) {
-        p <- p + facet_grid(rows = vars(snr), 
+        p <- p + facet_grid(rows = vars(SNR), 
                             labeller = label_both)
       } else if (num_dmaxf > 1) {
         p <- p + facet_grid(cols = vars(dmaxf), 
