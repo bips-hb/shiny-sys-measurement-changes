@@ -10,7 +10,9 @@
 This repository contains the source code for the Shiny application
 accompanying the paper  
 *“Assessing systematic changes in measurements across a data collection:
-A simulation study”*.
+A simulation study”*. The simulation study underlying this app,
+including code to reproduce all results, is available in a separate
+[GitHub repository](https://github.com/bips-hb/sys-measurement-changes).
 
 ## 🚀 Try the app
 
