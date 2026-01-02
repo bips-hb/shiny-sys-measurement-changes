@@ -140,7 +140,7 @@ server <- function(input, output, session) {
   })
   
   ## plot
-  output$simPlot <- renderPlot({
+  plot_results <- function(){
     data <- filtered_data()
     
     if (nrow(data) == 0) {
@@ -172,51 +172,51 @@ server <- function(input, output, session) {
                       y = .data[[est_col]],
                       color = algorithm,
                       fill=algorithm)) +
-           geom_smooth(method = "loess", 
-                       span = input$span, 
-                       se = input$show_ci, 
-                       alpha = 0.2) +
-           geom_line(aes(y = .data[[true_col]]), 
-                     linetype = "dashed", 
-                     color = "black") +
-           scale_color_manual(values = alg_col) + 
-           scale_fill_manual(values = alg_col) +
-           theme_minimal() +
-           labs(
-              title = paste0("Estimated ", 
-                             tolower(estimand_label), 
-                             " over sample size"),
-              subtitle = paste0("(Dashed line indicates the true ", 
-                                tolower(estimand_label), 
-                                ")"),
-              x = "Sample size",
-              y = paste("Estimated", 
-                        tolower(estimand_label)),
-              color = "Algorithm",
-              fill = "Algorithm"
-           )
+        geom_smooth(method = "loess", 
+                    span = input$span, 
+                    se = input$show_ci, 
+                    alpha = 0.2) +
+        geom_line(aes(y = .data[[true_col]]), 
+                  linetype = "dashed", 
+                  color = "black") +
+        scale_color_manual(values = alg_col) + 
+        scale_fill_manual(values = alg_col) +
+        theme_minimal() +
+        labs(
+          title = paste0("Estimated ", 
+                         tolower(estimand_label), 
+                         " over sample size"),
+          subtitle = paste0("(Dashed line indicates the true ", 
+                            tolower(estimand_label), 
+                            ")"),
+          x = "Sample size",
+          y = paste("Estimated", 
+                    tolower(estimand_label)),
+          color = "Algorithm",
+          fill = "Algorithm"
+        )
     } else if (current_plot_type == "boxplot") {
       p <- ggplot(data, 
                   aes(x = nobs_cat, 
                       y = .data[[dif_col]], 
                       color = algorithm)) +
-           geom_boxplot(outlier.shape = 16, 
-                        outlier.size = 0.5) +
-           geom_hline(yintercept = 0, 
-                      linetype = "dashed", 
-                      color = "darkgray") +
-           scale_color_manual(values = alg_col) + 
-           theme_minimal() +
-           labs(
-              title = paste0("Boxplot of ", 
-                             tolower(estimand_label), 
-                             " difference over sample size"),
-              x = "Sample size category",
-              y = paste(estimand_label, 
-                        "(estimated - true)"),
-              color = "Algorithm"
-           ) +
-           theme(axis.text.x = element_text(angle = 45, hjust = 1))
+        geom_boxplot(outlier.shape = 16, 
+                     outlier.size = 0.5) +
+        geom_hline(yintercept = 0, 
+                   linetype = "dashed", 
+                   color = "darkgray") +
+        scale_color_manual(values = alg_col) + 
+        theme_minimal() +
+        labs(
+          title = paste0("Boxplot of ", 
+                         tolower(estimand_label), 
+                         " difference over sample size"),
+          x = "Sample size category",
+          y = paste(estimand_label, 
+                    "(estimated - true)"),
+          color = "Algorithm"
+        ) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
     }
     
     ## optionally add raw data points
@@ -244,8 +244,40 @@ server <- function(input, output, session) {
       }
     }
     
-    print(p)
+    return(p)
+  }
     
+  ## render plot
+  output$simPlot <- renderPlot({
+    p <- plot_results()
+    
+    if (is.null(p)) {
+      plot.new()
+      title("No data to display. Please adjust your selections.")
+    } else {
+      print(p)
+    }
   })
+  
+  ## save output
+  output$download_plot <- downloadHandler(
+    filename = function() {
+      paste0("simulation_plot_", Sys.Date(), ".png")
+    },
+    content = function(file) {
+      p <- plot_results()
+      
+      if (is.null(p)) {
+        png(file, width = 1200, height = 800, res = 150)
+        plot.new()
+        text(0.5, 0.5, "No data to display")
+        dev.off()
+      } else {
+        png(file, width = 1200, height = 800, res = 150)
+        print(p)
+        dev.off()
+      }
+    }
+  )
 
 }
