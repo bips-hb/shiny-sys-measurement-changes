@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Shiny application for "Systematic measurment changes: A simulation study"
+# Shiny application for *Systematic measurement changes: A simulation study*
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -21,12 +21,12 @@ This repository contains the source code for the Shiny application accompanying 
 The simulation study underlying this app, including code to reproduce all results, is available in a separate [GitHub repository](https://github.com/bips-hb/sys-measurement-changes).
 
 ## 🚀 Try the app
-The interactive shiny app is available online at: https://sys-measurement-changes.bips.eu/.
+The interactive Shiny app is available online at: https://sys-measurement-changes.bips.eu/.
 
-The app allows users to explore results from a range of simulation settings across different sample sizes using LOESS-based visualisations and boxplots. All resulting figures can be downloaded directly from the application, and brief usage instructions are provided within the app interface.
+The app allows users to explore results from a range of simulation settings across different sample sizes using LOESS-based visualizations and boxplots. All resulting figures can be downloaded directly from the application, and brief usage instructions are provided within the app interface.
 
 ## 📖 About the app
-This application enables interactively visualisation of results from a large simulation study investigating systematic changes in measurements. The study compares seven statistical methods for quantifying systematic changes in measurements across different settings:  
+This application enables interactively visualization of results from a large simulation study investigating systematic changes in measurements. The study compares seven statistical methods for quantifying systematic changes in measurements across different settings:  
 - Autoregressive integrated moving average (ARIMA)  
 - Fused lasso signal approximator (FLSA)  
 - Generalized additive model (GAM)  
@@ -35,7 +35,7 @@ This application enables interactively visualisation of results from a large sim
 - Pruned exact linear time (PELT)  
 - Piecewise regression (PR)
 
-Users can explore how these methods behave under different distributions, signal-to-noise ratios, and systematic change patterns.
+Users can explore how these methods behave under different data distributions, signal-to-noise ratios, and systematic change patterns.
 
 ## 📁 Repository structure
 - `data/`: Contains the results of the simulation study.
@@ -47,7 +47,7 @@ Users can explore how these methods behave under different distributions, signal
 
 ## 📚 R environment (for local development)
 This project uses the `renv` R package to manage package versions for reproducibility. 
-Developers who wish to run the app locally can restore the exact package versions recorded in [renv.lock](renv.lock) using:
+Developers who wish to run the app locally can restore the **exact package versions** recorded in [renv.lock](renv.lock) using:
 
 ```{r, echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 install.packages("renv")

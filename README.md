@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Shiny application for “Systematic measurment changes: A simulation study”
+# Shiny application for *Systematic measurement changes: A simulation study*
 
 <!-- badges: start -->
 
@@ -16,18 +16,18 @@ including code to reproduce all results, is available in a separate
 
 ## 🚀 Try the app
 
-The interactive shiny app is available online at:
+The interactive Shiny app is available online at:
 <https://sys-measurement-changes.bips.eu/>.
 
 The app allows users to explore results from a range of simulation
-settings across different sample sizes using LOESS-based visualisations
+settings across different sample sizes using LOESS-based visualizations
 and boxplots. All resulting figures can be downloaded directly from the
 application, and brief usage instructions are provided within the app
 interface.
 
 ## 📖 About the app
 
-This application enables interactively visualisation of results from a
+This application enables interactively visualization of results from a
 large simulation study investigating systematic changes in measurements.
 The study compares seven statistical methods for quantifying systematic
 changes in measurements across different settings:  
@@ -39,7 +39,7 @@ changes in measurements across different settings:
 - Pruned exact linear time (PELT)  
 - Piecewise regression (PR)
 
-Users can explore how these methods behave under different
+Users can explore how these methods behave under different data
 distributions, signal-to-noise ratios, and systematic change patterns.
 
 ## 📁 Repository structure
@@ -56,7 +56,7 @@ distributions, signal-to-noise ratios, and systematic change patterns.
 
 This project uses the `renv` R package to manage package versions for
 reproducibility. Developers who wish to run the app locally can restore
-the exact package versions recorded in [renv.lock](renv.lock) using:
+the **exact package versions** recorded in [renv.lock](renv.lock) using:
 
 ``` r
 install.packages("renv")
