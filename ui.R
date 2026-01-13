@@ -26,7 +26,7 @@ ui <- page_sidebar(
   ),
   sidebar = sidebar(
     width = 350,
-    h5("Simulation setting"),
+    h5("Simulation Setting"),
 
     # distribution
     div(
@@ -70,7 +70,7 @@ ui <- page_sidebar(
           style = "color: #001959;"
         ),
         HTML(
-          "Systamtic change pattern used to simulate the measurements."
+          "Systematic change pattern used to simulate the measurements."
         ),
         title = "Systematic change pattern",
         placement = "right",
@@ -202,12 +202,14 @@ ui <- page_sidebar(
             class = "info-icon",
             style = "color: #001959;"
           ),
-          HTML("Factor dmaxf used to simulate the measurements. The factor was multiplied
-          with the measurement distribution's standard deviation (on the normal or
-          log scale) to obtain the maximum magnitude of systematic change
-          <i>d<sub>max</sub></i>.
-          Multiple factors can be selected. Each selected dmaxf is shown in an
-          individual subplot."),
+          HTML(
+            "Factor dmaxf used to simulate the measurements. The factor is multiplied
+            by the measurement distribution’s standard deviation (on the normal or
+            log scale) to obtain the maximum magnitude of systematic change
+            <i>d<sub>max</sub></i>.
+            Multiple factors can be selected. Each selected dmaxf is shown in an
+            individual subplot."
+          ),
           title = "Factor for the maximum magnitude of systematic change (dmaxf)",
           placement = "right",
           options = list(trigger = "focus")
@@ -268,12 +270,13 @@ ui <- page_sidebar(
           style = "color: #001959;"
         ),
         HTML(
-          "Statistical method to quantify systmatic changes in measurements:
+          "Statistical method used to quantify systematic changes in measurements:
           ARIMA (autoregressive integrated moving average), FLSA (fused lasso
-          signal approximator), GAM (Generalized additive model), LOWESS (locally
+          signal approximator), GAM (generalized additive model), LOWESS (locally
           weighted scatterplot smoothing), MA (moving average), PELT (pruned exact
-          linear time), PR (piecewise regression). Multiple methods can be selected.
-          The selected methods are shown in the same plot using different colors."
+          linear time), and PR (piecewise regression).
+          Multiple methods can be selected. The selected methods are shown in the
+          same plot using different colors."
         ),
         title = "Method",
         placement = "right",
@@ -297,7 +300,7 @@ ui <- page_sidebar(
       options = list(plugins = list("remove_button"))
     ),
     hr(),
-    h5("Visualisation"),
+    h5("Visualization"),
 
     # plot type
     conditionalPanel(
@@ -316,8 +319,8 @@ ui <- page_sidebar(
             class = "info-icon",
             style = "color: #001959;"
           ),
-          "Choose whether to display estimated values over the sample size using LOESS smoothing or
-          differences between true and estimated values over the five sample size
+          "Choose whether to display estimated values across sample sizes using LOESS smoothing or
+          differences between true and estimated values across the five sample size
           categories (30-50, 51-100, 101-200, 201-500, 501-1000) using boxplots.",
           title = "Plot type",
           placement = "right",
@@ -350,8 +353,8 @@ ui <- page_sidebar(
             class = "info-icon",
             style = "color: #001959;"
           ),
-          "Controls the smoothing parameter for the LOESS fit. Smaller values
-          follow the data more closely whereas larger values produce smoother curves.",
+          "Controls the smoothing parameter for the LOESS fit. Smaller values follow
+          the data more closely, whereas larger values produce smoother curves.",
           title = "Span for LOESS",
           placement = "right",
           options = list(trigger = "focus")
@@ -429,20 +432,20 @@ ui <- page_sidebar(
     plotOutput("simPlot", height = "600px"),
     div(
       style = "margin-top: 6px; text-align: right;",
-      downloadButton("download_plot", "Download figure", class = "btn-sm btn-primary")
+      downloadButton("download_plot", "Download Figure", class = "btn-sm btn-primary")
     )
   ),
   accordion(
     accordion_panel(
       "About",
       HTML(
-        '<p>This application allows you to interactively visualise the results of the
-      simulation study from the paper <i>"Assessing systematic changes in measurements:
-      A simulation study"</i>. The study compared different statistical methods for quantifying systematic changes
-      in measurements across various settings.</p>
-      <p>Use the controls on the left to select the desired estimand, simulation setting,
-      and statistical methods for the visualisation. The resulting figure can be
-      downloaded by clicking on the download button below the figure.</p>'
+        '<p>This application allows you to interactively visualize the results of the
+        simulation study from the paper <i>"Assessing systematic changes in measurements:
+        A simulation study"</i>. The study compares different statistical methods for
+        quantifying systematic changes in measurements across various settings.</p>
+        <p>Use the controls on the left to select the desired estimand, simulation setting,
+        and statistical methods for visualization. The resulting figure can be
+        downloaded using the button below the plot.</p>'
       )
     )
   )
