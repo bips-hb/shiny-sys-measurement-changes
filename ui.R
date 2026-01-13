@@ -445,7 +445,11 @@ ui <- page_sidebar(
         quantifying systematic changes in measurements across various settings.</p>
         <p>Use the controls on the left to select the desired estimand, simulation setting,
         and statistical methods for visualization. The resulting figure can be
-        downloaded using the button below the plot.</p>'
+        downloaded using the button below the plot.</p>
+        <p><small style="color: #4B4B4B;">
+        <em>Note:</em> This Shiny application was developed by Annika Swenne. For questions 
+        or feedback, please contact <a href="mailto:swenne@leibniz-bips.de">swenne@leibniz-bips.de</a>.
+        </small></p>'
       )
     )
   )
