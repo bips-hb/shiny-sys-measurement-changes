@@ -48,7 +48,10 @@ distributions, signal-to-noise ratios, and systematic change patterns.
 - `renv/`: Contains project-specific environment configuration files.
 - `output_shiny_application.pdf`: All figures from the Shiny
   application. This corresponds to Supplementary data 3 of the paper.
-- `renv.lock`: Records package versions.
+- `renv.lock`: Package versions required to run the Shiny application
+  locally (R 4.4.3).
+- `renv.lock.server-r4.1`: Package versions used for hosted server
+  deployment (R 4.1.2).
 - `server.R`: Shiny server logic.
 - `ui.R`: Shiny user interface definition.
 
