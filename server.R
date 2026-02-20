@@ -250,7 +250,7 @@ server <- function(input, output, session) {
     }
 
     ## optionally add raw data points
-    if (current_plot_type != "boxplot" & input$show_points) {
+    if (current_plot_type != "boxplot" && input$show_points) {
       p <- p + geom_point(alpha = 0.4, size = 1.5)
     }
 
