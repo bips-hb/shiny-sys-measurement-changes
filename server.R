@@ -15,7 +15,7 @@ library(dplyr)
 # Preprocessing ----------------------------------------------------------------
 
 ## load data
-res <- readRDS("data/res.Rds")
+res <- readRDS("data/res.rds")
 
 ## define labels
 # algorithm
