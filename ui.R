@@ -22,7 +22,7 @@ ui <- page_sidebar(
   useShinyjs(),
   title = div(
     h2("Systematic changes in measurements"),
-    h4(HTML('Results from the paper <i>"Assessing systematic changes in measurements: A simulation study"</i>'))
+    h4(HTML('Results from the paper <i>"Assessing systematic measurement changes in single-wave study data: A simulation study"</i>'))
   ),
   sidebar = sidebar(
     width = 350,
@@ -440,9 +440,9 @@ ui <- page_sidebar(
       "About",
       HTML(
         '<p>This application allows you to interactively visualize the results of the
-        simulation study from the paper <i>"Assessing systematic changes in measurements:
+        simulation study from the paper <i>"Assessing systematic measurement changes in single-wave study data:
         A simulation study"</i>. The study compares different statistical methods for
-        quantifying systematic changes in measurements across various settings.</p>
+        quantifying systematic changes in a sequence of measurements across various settings.</p>
         <p>Use the controls on the left to select the desired estimand, simulation setting,
         and statistical methods for visualization. The resulting figure can be
         downloaded using the button below the plot.</p>
