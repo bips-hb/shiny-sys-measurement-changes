@@ -17,7 +17,7 @@ repository](https://github.com/bips-hb/sys-measurement-changes).
 ## 🚀 Try the app
 
 The interactive Shiny app is available online at:
-<https://sys-measurement-changes.bips.eu/>.
+<https://dataquality.qihs.uni-greifswald.de/vignettes.html#Methods>.
 
 The app allows users to explore results from a range of simulation
 settings across different sample sizes using LOESS-based visualizations
