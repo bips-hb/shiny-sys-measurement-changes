@@ -441,7 +441,7 @@ ui <- page_sidebar(
       HTML(
         '<p>This application allows you to interactively visualize the results of the
         simulation study from the paper <i>"Assessing systematic measurement changes in single-wave study data:
-        A simulation study"</i>. The study compares different statistical methods for
+        a simulation study"</i>. The study compares different statistical methods for
         quantifying systematic changes in a sequence of measurements across various settings.</p>
         <p>Use the controls on the left to select the desired estimand, simulation setting,
         and statistical methods for visualization. The resulting figure can be
