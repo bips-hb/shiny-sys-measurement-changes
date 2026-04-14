@@ -22,7 +22,7 @@ ui <- page_sidebar(
   useShinyjs(),
   title = div(
     h2("Systematic changes in measurements"),
-    h4(HTML('Results from the paper <i>"Assessing systematic measurement changes in single-wave study data: A simulation study"</i>'))
+    h4(HTML('Results from the paper <i>"Assessing systematic measurement changes in single-wave study data: a simulation study"</i>'))
   ),
   sidebar = sidebar(
     width = 350,

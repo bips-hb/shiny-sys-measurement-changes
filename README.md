@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Shiny application for *Systematic measurement changes: A simulation study*
+# Shiny application for *Systematic measurement changes: a simulation study*
 
 <!-- badges: start -->
 
@@ -9,7 +9,7 @@
 
 This repository contains the source code for the Shiny application
 accompanying the paper  
-*“Assessing systematic measurement changes in single-wave study data: A
+*“Assessing systematic measurement changes in single-wave study data: a
 simulation study”*. The simulation study underlying this app, including
 code to reproduce all results, is available in a separate [GitHub
 repository](https://github.com/bips-hb/sys-measurement-changes).
