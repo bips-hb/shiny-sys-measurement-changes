@@ -32,12 +32,12 @@ large simulation study investigating systematic changes in measurements.
 The study compares seven statistical methods for quantifying systematic
 changes in measurements across different settings:  
 - Autoregressive integrated moving average (ARIMA)  
+- Centered moving average (CMA)  
 - Fused lasso signal approximator (FLSA)  
-- Generalized additive model (GAM)  
 - Locally weighted scatterplot smoothing (LOWESS)  
-- Moving average (MA)  
 - Pruned exact linear time (PELT)  
-- Piecewise regression (PR)
+- Piecewise regression (PR)  
+- Thin plate regression splines (TPRS)
 
 Users can explore how these methods behave under different data
 distributions, signal-to-noise ratios, and systematic change patterns.

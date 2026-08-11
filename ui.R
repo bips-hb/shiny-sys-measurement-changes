@@ -271,12 +271,12 @@ ui <- page_sidebar(
         ),
         HTML(
           "Statistical method used to quantify systematic changes in measurements:
-          ARIMA (autoregressive integrated moving average), FLSA (fused lasso
-          signal approximator), GAM (generalized additive model), LOWESS (locally
+          ARIMA (autoregressive integrated moving average), CMA (centered moving
+          average), FLSA (fused lasso signal approximator), LOWESS (locally 
           weighted scatterplot smoothing), MA (moving average), PELT (pruned exact
-          linear time), and PR (piecewise regression).
-          Multiple methods can be selected. The selected methods are shown in the
-          same plot using different colors."
+          linear time), PR (piecewise regression), and TPRS (thin plate regression
+          splines). Multiple methods can be selected. The selected methods are shown 
+          in the same plot using different colors."
         ),
         title = "Method",
         placement = "right",
@@ -288,12 +288,12 @@ ui <- page_sidebar(
       label = NULL,
       choices = c(
         "ARIMA" = "alg_arima",
+        "CMA" = "alg_moving_avg",
         "FLSA" = "alg_flsa",
-        "GAM" = "alg_gam",
         "LOWESS" = "alg_lowess",
-        "MA" = "alg_moving_avg",
         "PELT" = "alg_pelt",
-        "PR" = "alg_piecewise_reg"
+        "PR" = "alg_piecewise_reg",
+        "TPRS" = "alg_gam"
       ),
       selected = c("alg_arima", "alg_lowess"),
       multiple = TRUE,
