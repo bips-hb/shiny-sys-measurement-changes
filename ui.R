@@ -273,7 +273,7 @@ ui <- page_sidebar(
           "Statistical method used to quantify systematic changes in measurements:
           ARIMA (autoregressive integrated moving average), CMA (centered moving
           average), FLSA (fused lasso signal approximator), LOWESS (locally 
-          weighted scatterplot smoothing), MA (moving average), PELT (pruned exact
+          weighted scatterplot smoothing), PELT (pruned exact
           linear time), PR (piecewise regression), and TPRS (thin plate regression
           splines). Multiple methods can be selected. The selected methods are shown 
           in the same plot using different colors."
